@@ -382,6 +382,7 @@ module Rack
         pid = ::File.read(options[:pid]).to_i
         return :dead if pid == 0
 
+        puts("[DEBUG] pid: #{pid}")
         Process.kill(0, pid)
         :running
       rescue Errno::ESRCH

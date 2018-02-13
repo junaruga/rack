@@ -160,6 +160,7 @@ describe Rack::Server do
 
   it "check pid file presence and not owned process" do
     pidfile = Tempfile.open('pidfile') { |f| f.write(1); break f }.path
+    puts("[DEBUG] pidfile: #{pidfile}")
     server = Rack::Server.new(:pid => pidfile)
     server.send(:pidfile_process_status).must_equal :not_owned
   end
